@@ -1,6 +1,6 @@
 [
     {
-        "url": "http://myminecoin.com:8117",
+        "url": "http://xun.myminecoin.com:8117/stats",
         "conn": "stratum+tcp://myminecoin.com",
         "symbol": "XUN",
         "img": "assets/ultranotecoin.png",
