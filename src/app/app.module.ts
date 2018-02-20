@@ -30,7 +30,6 @@ import {
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { RouterLinkWithHref } from '@angular/router/src/directives/router_link';
-import { FlexLayoutModule } from "@angular/flex-layout";
 import { GettingStartedComponent } from './getting-started/getting-started.component';
 import { WorkerStatsComponent } from './worker-stats/worker-stats.component';
 import { PoolBlocksComponent } from './pool-blocks/pool-blocks.component';
