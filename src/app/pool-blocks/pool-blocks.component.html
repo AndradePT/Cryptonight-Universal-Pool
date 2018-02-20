@@ -1,0 +1,19 @@
+<h1>Pool Blocks </h1>
+
+
+<table class="rwd-table">
+  <tr>
+    <th>Height</th>
+    <th>Difficulty</th>
+    <th>Block Hash</th>
+    <th>Time Found</th>
+  </tr>
+  <tr *ngFor="let block of poolblock">
+    <td data-th="Height">{{block.Height}}</td>
+    <td data-th="Difficulty">{{block.Difficulty}}</td>
+    <td data-th="Block Hash">
+      <a target="_blank" href="{{block.Url}}">{{block.BlockHash}}</a>
+    </td>
+    <td data-th="Time Found">{{block.TimeFound}}</td>
+  </tr>
+</table>

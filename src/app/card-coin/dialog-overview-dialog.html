@@ -1,0 +1,23 @@
+<h1>Configuration:</h1>
+
+<mat-list>
+    <mat-list-item>
+        <p matLine>Username:</p>
+        <p>Wallet</p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+        <p matLine>Password:</p>
+        <p>Anything</p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+        <p matLine>Algorithm:</p>
+        cryptonight
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item *ngFor="let ports of data.port">
+        <p matLine>Difficulty ({{ports.difficulty}}):</p>
+        <p>{{data.url}}:{{ports.port}}</p>
+    </mat-list-item>
+</mat-list>

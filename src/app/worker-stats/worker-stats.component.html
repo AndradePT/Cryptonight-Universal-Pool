@@ -1,0 +1,41 @@
+<h1>
+  Worker Stats</h1>
+
+<mat-card class="address-card">
+  <mat-form-field class="address-full-width">
+    <input matInput placeholder="Address" [(ngModel)]="address">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="findAddres(address)">
+    <i class="material-icons">search</i>
+  </button>
+</mat-card>
+
+<table class="rwd-table" *ngIf="AddressInfo">
+  <tr>
+    <th>Balance</th>
+    <th>Paid</th>
+    <th>Hashrate</th>
+  </tr>
+  <tr>
+    <td data-th="Time Sent">{{AddressInfo.Balance}}</td>
+    <td data-th="Paid">{{AddressInfo.Paid}}</td>
+    <td data-th="Hashrate"> {{AddressInfo.Hashrate}}</td>
+  </tr>
+</table>
+
+
+
+<table class="rwd-table" *ngIf="AddressInfo">
+  <tr>
+    <th>Time Sent</th>
+    <th>Transaction Hash</th>
+    <th>Amount</th>
+  </tr>
+  <tr *ngFor="let pay of AddressInfo.AddressPayment">
+    <td data-th="Time Sent">{{pay.Time}}</td>
+    <td data-th="Transaction Hash">
+      <a target="_blank" href="{{pay.Url}}">{{pay.TransactionHash}}</a>
+    </td>
+    <td data-th="Amount">{{pay.Amount}}</td>
+  </tr>
+</table>

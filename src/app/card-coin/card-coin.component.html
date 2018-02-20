@@ -1,0 +1,41 @@
+<mat-card class="card" *ngIf="Poolinfo">
+  <mat-card-header>
+    <mat-card-title>
+      <a target="_blank" href="{{configPool.website}}"><h2>{{Poolinfo.Name}}</h2> </a>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <ul class="infoprice">
+        <li>{{Poolinfo.Symbol}}</li>
+        <li>BTC: {{price_btc}}  </li>
+        <li>USD: {{price_usd}}  </li>
+      </ul>
+     </mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="./{{configPool.img}}" alt="{{Poolinfo.Name}}">
+  <mat-card-content>
+
+    <mat-list>
+      <mat-list-item>
+        <p matLine>Hashrate</p>
+        <p>{{Poolinfo.Hashrate}}H/sec</p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <p matLine>Miners</p>
+        <p>{{Poolinfo.Miners}}</p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <p matLine>Reward</p>
+        <p>{{Poolinfo.Reward}}{{Poolinfo.Symbol}}</p>
+      </mat-list-item>
+    </mat-list>
+
+
+
+  </mat-card-content>
+  <mat-card-footer>
+    <button mat-raised-button [routerLink]="['/poolinfo',Poolinfo.Symbol,'getting_started']">Info</button>
+    <button mat-raised-button (click)="openDialog()">Pool Connect</button>
+  </mat-card-footer>
+</mat-card>

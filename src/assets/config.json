@@ -1,0 +1,22 @@
+[
+    {
+        "url": "http://myminecoin.com:8117",
+        "conn": "stratum+tcp://myminecoin.com",
+        "symbol": "XUN",
+        "img": "assets/ultranotecoin.png",
+        "website": "https://ultranote.org/",
+        "coinUnit": 1000000,
+        "blockchainExplorer": "http://explorer.ultranote.org/?hash={id}#blockchain_block",
+        "transactionExplorer": "http://explorer.ultranote.org/?hash={id}#blockchain_transaction"
+    },
+    {
+        "url": "http://xlc.myminecoin.com:8117",
+        "conn": "stratum+tcp://xlc.myminecoin.com",
+        "symbol": "XLC",
+        "img": "assets/leviarcoin.png",
+        "website": "https://leviarcoin.org/",
+        "coinUnit": 100000000,
+        "blockchainExplorer": "https://explore.leviarcoin.org/block/{id}",
+        "transactionExplorer": "https://explore.leviarcoin.org/transaction/{id}"
+    }
+]

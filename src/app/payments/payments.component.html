@@ -1,0 +1,37 @@
+<h1>Payments</h1>
+
+
+
+<table class="rwd-table" *ngIf="PaymentsInfo">
+  <tr>
+    <th>Min. Payment</th>
+    <th>Total Payments</th>
+    <th>Total Miners Paid</th>
+  </tr>
+  <tr>
+    <td data-th="Min. Payment">{{PaymentsInfo.MinPaymentThreshold/PaymentsInfo.DenominationUnit}}</td>
+    <td data-th="Total Payments">{{PaymentsInfo.totalPayments}}</td>
+    <td data-th="Total Miners Paid">{{PaymentsInfo.totalMinersPaid}}</td>
+  </tr>
+</table>
+
+
+
+
+
+<table class="rwd-table" *ngIf="PaymentsInfo">
+  <tr>
+    <th>Time</th>
+    <th>TransactionHash</th>
+    <th>Amount</th>
+    <th>Payees</th>
+  </tr>
+  <tr *ngFor="let payments of PaymentsInfo.Payments">
+    <td data-th="Time">{{payments.Time}}</td>
+    <td data-th="TransactionHash">
+      <a target="_blank" href="{{payments.Url}}">{{payments.TransactionHash}}</a>
+    </td>
+    <td data-th="Amount">{{payments.Amount}}</td>
+    <td data-th="Payees">{{payments.Payees}}</td>
+  </tr>
+</table>

@@ -1,0 +1,56 @@
+<h1>Info Pool</h1>
+
+<mat-card class="card" *ngIf="Poolinfo">
+  <mat-card-header>
+    <mat-card-title>
+      <h2>{{Poolinfo.Name}}</h2>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <ul class="infoprice">
+        <li>{{Poolinfo.Symbol}}</li>
+        <li>BTC: {{price_btc}} </li>
+        <li>USD: {{price_usd}} </li>
+      </ul>
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <mat-list>
+      <mat-list-item>
+        <p matLine>Hashrate</p>
+        <p>{{Poolinfo.Hashrate}}H/sec</p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <p matLine>Miners</p>
+        <p>{{Poolinfo.Miners}}</p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <p matLine>Reward</p>
+        <p>{{Poolinfo.Reward}}{{Symbol}}</p>
+      </mat-list-item>
+    </mat-list>
+
+
+
+  </mat-card-content>
+
+</mat-card>
+
+<h1>Mining Ports</h1>
+
+<table class="rwd-table" *ngIf="Poolinfo">
+  <tr>
+    <th>Connect/Port</th>
+    <th>Starting Difficulty</th>
+    <th>Description</th>
+  </tr>
+  <tr *ngFor="let pool of Poolinfo.ports">
+    <td data-th="Port">{{Url}}:{{pool.port}} </td>
+    <td data-th="Difficulty">{{pool.difficulty}}</td>
+    <td data-th="Description">{{pool.desc}}</td>
+  </tr>
+</table>

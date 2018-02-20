@@ -1,0 +1,33 @@
+.card {
+  width: 300px;
+  background-color: #34495e;
+}
+
+img {
+  width: 300px;
+  margin: 10px auto;
+  height: 100px;
+}
+
+a {
+  text-decoration: none;
+}
+
+h2 {
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+}
+
+button {
+  margin: 5px auto;
+  margin-left: 5px;
+}
+
+p {
+  color: white;
+}
+
+.infoprice li{
+  color: wheat;
+  font-family: 'Courier New', Courier, monospace;
+}

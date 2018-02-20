@@ -1,0 +1,13 @@
+
+<div class="flexbox">
+  <!-- card list -->
+  <ul class="flex-card-list">
+      <!-- card list item -->
+      <li class="flex-card-listitem" *ngFor="let pool of _poolArray">
+          <app-card-coin [configPool]="pool">
+
+          </app-card-coin>
+      </li>
+
+  </ul>
+</div>
