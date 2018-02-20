@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../classes/ApiService';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { PoolBlocks } from '../classes/poolblocks';
+import { PoolBlocks } from '../classes/PoolBlocks';
 
 @Component({
   selector: 'app-pool-blocks',
