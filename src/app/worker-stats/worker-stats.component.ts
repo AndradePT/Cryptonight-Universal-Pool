@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AddressPay, AddressInfo } from '../classes/Addressinfo';
+import { AddressPay, AddressInfo } from '../classes/AddressInfo';
 import { ApiService } from '../classes/ApiService';
 import { CookieService } from 'ngx-cookie-service';
 

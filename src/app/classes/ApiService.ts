@@ -4,10 +4,10 @@ import { Observable } from "rxjs/Observable";
 import "rxjs/Rx";
 
 import { Pools } from './Pools';
-import { PoolBlocks } from './poolblocks';
+import { PoolBlocks } from './Poolblocks';
 import { Payments, PaymentsInfo } from './Payments';
 import { Poolinfo, Ports } from './Poolinfo';
-import { AddressInfo, AddressPay } from './Addressinfo';
+import { AddressInfo, AddressPay } from './AddressInfo';
 
 
 @Injectable()
