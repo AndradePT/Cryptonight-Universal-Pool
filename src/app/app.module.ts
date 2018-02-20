@@ -67,7 +67,6 @@ const appRoute = [
     BrowserModule,
     NoopAnimationsModule,
     BrowserAnimationsModule,
-    FlexLayoutModule,
     RouterModule.forRoot(appRoute),
     HttpModule,
     MatCardModule,
