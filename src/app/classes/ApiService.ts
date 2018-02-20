@@ -4,7 +4,7 @@ import { Observable } from "rxjs/Observable";
 import "rxjs/Rx";
 
 import { Pools } from './Pools';
-import { PoolBlocks } from './Poolblocks';
+import { PoolBlocks } from './PoolBlocks';
 import { Payments, PaymentsInfo } from './Payments';
 import { Poolinfo, Ports } from './Poolinfo';
 import { AddressInfo, AddressPay } from './AddressInfo';
