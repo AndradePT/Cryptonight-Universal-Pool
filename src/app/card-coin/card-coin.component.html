@@ -1,33 +1,35 @@
 <mat-card class="card" *ngIf="Poolinfo">
   <mat-card-header>
     <mat-card-title>
-      <a target="_blank" href="{{configPool.website}}"><h2>{{Poolinfo.Name}}</h2> </a>
+      <a target="_blank" href="{{configPool.website}}">
+        <h2>{{Poolinfo.pool.Name}}</h2>
+      </a>
     </mat-card-title>
     <mat-card-subtitle>
       <ul class="infoprice">
-        <li>{{Poolinfo.Symbol}}</li>
-        <li>BTC: {{price_btc}}  </li>
-        <li>USD: {{price_usd}}  </li>
+        <li>{{Poolinfo.pool.Symbol}}</li>
+        <li>BTC: {{price_btc}} </li>
+        <li>USD: {{price_usd}} </li>
       </ul>
-     </mat-card-subtitle>
+    </mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image src="./{{configPool.img}}" alt="{{Poolinfo.Name}}">
   <mat-card-content>
 
     <mat-list>
       <mat-list-item>
-        <p matLine>Hashrate</p>
-        <p>{{Poolinfo.Hashrate}}H/sec</p>
+        <h2 matLine>Hash Rate:</h2>
+        <p matLine>{{Poolinfo.pool.Hashrate}}</p>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
-        <p matLine>Miners</p>
-        <p>{{Poolinfo.Miners}}</p>
+        <h2 matLine>Miners:</h2>
+        <p matLine>{{Poolinfo.pool.Miners}}</p>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
-        <p matLine>Reward</p>
-        <p>{{Poolinfo.Reward}}{{Poolinfo.Symbol}}</p>
+        <h2 matLine>Reward:</h2>
+        <p matLine>{{Poolinfo.pool.Reward}}</p>
       </mat-list-item>
     </mat-list>
 
@@ -35,7 +37,7 @@
 
   </mat-card-content>
   <mat-card-footer>
-    <button mat-raised-button [routerLink]="['/poolinfo',Poolinfo.Symbol,'getting_started']">Info</button>
+    <button mat-raised-button [routerLink]="['/poolinfo',Poolinfo.pool.Symbol,'getting_started']">Info</button>
     <button mat-raised-button (click)="openDialog()">Pool Connect</button>
   </mat-card-footer>
 </mat-card>

@@ -12,7 +12,8 @@ export interface Poolinfo {
     Name: string;
     Symbol: string;
     Reward: string;
-
     ports: Ports[];
+    Fee: string;
+    BlockFound: string;
 
 }

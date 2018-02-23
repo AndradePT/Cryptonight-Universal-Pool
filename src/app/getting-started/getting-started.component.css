@@ -105,10 +105,46 @@ p {
 
 h2 {
   font-family: 'Courier New', Courier, monospace;
-  color: white;
+  color: #dd5;
 }
 
 .infoprice li{
   color: wheat;
   font-family: 'Courier New', Courier, monospace;
+}
+
+
+
+ul
+{
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Put behind .flexbox for Feature detection with Modernizr */
+.flexbox .flex-card-list {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: center;
+}
+
+.flexbox .flex-card-listitem {
+  display:flex;
+
+  padding: 1em;
+}
+
+.flexbox .flex-card {
+  display:flex;
+  flex-direction:column;
+}
+
+.flexbox .flex-card-content {
+  display:flex;
+  flex:1 0 auto; /* We have to add a basis for IE10/11 */
+  flex-direction:column;
+}
+
+.flexbox .flex-card-content p {
+  flex:1 0 auto; /* We have to add a basis for IE10/11 */
 }

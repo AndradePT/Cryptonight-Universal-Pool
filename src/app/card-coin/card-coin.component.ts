@@ -5,35 +5,46 @@ import { Observable } from 'rxjs/Observable';
 import { Pools } from '../classes/Pools';
 import { Ports, Poolinfo } from '../classes/Poolinfo';
 import * as coinmarketcap from 'coinmarketcap';
+import {Subscription} from "rxjs";
+
 
 @Component({
   selector: 'app-card-coin',
   templateUrl: './card-coin.component.html',
   styleUrls: ['./card-coin.component.css']
 })
-export class CardCoinComponent implements OnInit {
+export class CardCoinComponent implements OnInit, OnDestroy {
   @Input() configPool: Pools;
 
 
 
-  Poolinfo: Poolinfo;
+  Poolinfo: any;
   price_usd: string = '-';
   price_btc: string = '-';
-
+  timerSub: any;
+  subscription: Subscription;
 
 
   constructor(private apiSerivce: ApiService, public dialog: MatDialog) {
 
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
 
+    
+  }
 
   ngOnInit() {
 
     this.UpdateCard();
 
-    var timer = Observable.interval(15000);
-    timer.subscribe(x => this.UpdateCard());
+    let timer = Observable.interval(15000);
+    this.subscription = timer.subscribe(t => {
+      this.UpdateCard()
+    });
+
+    
 
   }
 
@@ -41,7 +52,8 @@ export class CardCoinComponent implements OnInit {
     this.apiSerivce.UpdateCoins(this.configPool.url).subscribe((data) => {
 
       this.Poolinfo = data;
-      this.values(data.Name)
+
+      this.values(data.pool.Name)
 
     });
   }
@@ -50,7 +62,7 @@ export class CardCoinComponent implements OnInit {
   openDialog(): void {
     let dialogRef = this.dialog.open(DialogOverviewDialog, {
       width: '600px',
-      data: { port: this.Poolinfo.ports, url: this.configPool.conn }
+      data: { port: this.Poolinfo.pool.ports, url: this.configPool.conn }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -59,19 +71,18 @@ export class CardCoinComponent implements OnInit {
   }
 
 
- async values(coin) {
+  async values(coin) {
 
     try {
- 
+
 
 
       var client = await coinmarketcap.tickerByAsset(coin);
-      
-      if(!client.error)
-      {
+
+      if (!client.error) {
         this.price_btc = client.price_btc;
         this.price_usd = client.price_usd;
-        console.log(client)
+
       }
     }
     catch (e) {

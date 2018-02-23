@@ -1,5 +1,4 @@
 
-
 footer {
   background:rgb(115, 228, 70);
   bottom: 0;
@@ -72,3 +71,4 @@ footer[role="contentinfo"] {
       -ms-flex-align: center;
           align-items: center;
 }
+

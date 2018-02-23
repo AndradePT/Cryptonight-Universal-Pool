@@ -1,44 +1,118 @@
 <h1>Info Pool</h1>
 
-<mat-card class="card" *ngIf="Poolinfo">
-  <mat-card-header>
-    <mat-card-title>
-      <h2>{{Poolinfo.Name}}</h2>
-    </mat-card-title>
-    <mat-card-subtitle>
-      <ul class="infoprice">
-        <li>{{Poolinfo.Symbol}}</li>
-        <li>BTC: {{price_btc}} </li>
-        <li>USD: {{price_usd}} </li>
-      </ul>
-    </mat-card-subtitle>
-  </mat-card-header>
-
-  <mat-card-content>
-
-    <mat-list>
-      <mat-list-item>
-        <p matLine>Hashrate</p>
-        <p>{{Poolinfo.Hashrate}}H/sec</p>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-        <p matLine>Miners</p>
-        <p>{{Poolinfo.Miners}}</p>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-        <p matLine>Reward</p>
-        <p>{{Poolinfo.Reward}}{{Symbol}}</p>
-      </mat-list-item>
-    </mat-list>
 
 
 
-  </mat-card-content>
+<div class="flexbox">
+  <!-- card list -->
+  <ul class="flex-card-list">
+    <!-- card list item -->
+    <li class="flex-card-listitem">
+      <mat-card class="card" *ngIf="Poolinfo">
+        <mat-card-header>
+          <mat-card-title>
+            <h2>{{Poolinfo.pool.Name}}</h2>
+          </mat-card-title>
+          <mat-card-subtitle>
+            <ul class="infoprice">
+              <li>{{Poolinfo.pool.Symbol}}</li>
+              <li>BTC: {{price_btc}} </li>
+              <li>USD: {{price_usd}} </li>
+            </ul>
+          </mat-card-subtitle>
+        </mat-card-header>
 
-</mat-card>
+        <mat-card-content>
+
+          <mat-list>
+            <mat-list-item>
+              <h2 matLine>Hash Rate:</h2>
+              <p matLine>{{Poolinfo.pool.Hashrate}}</p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <h2 matLine>Block Found Every:</h2>
+              <p matLine>{{Poolinfo.pool.blockSolvedTime}}</p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <h2 matLine>Miners:</h2>
+              <p matLine>{{Poolinfo.pool.Miners}}</p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <h2 matLine>Reward:</h2>
+              <p matLine>{{Poolinfo.pool.Fee}}</p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <h2 matLine>Reward:</h2>
+              <p matLine>{{Poolinfo.pool.Reward}}</p>
+            </mat-list-item>
+          </mat-list>
+
+
+
+        </mat-card-content>
+
+      </mat-card>
+    </li>
+
+    <li class="flex-card-listitem">
+      <mat-card class="card" *ngIf="Poolinfo">
+        <mat-card-header>
+          <mat-card-title>
+            <h2>Network</h2>
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+
+          <mat-list>
+            <mat-list-item>
+              <h2 matLine>Hash Rate:</h2>
+              <p matLine>{{Poolinfo.network.HashRate}}</p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <h2 matLine>Block Found:</h2>
+              <p matLine>{{Poolinfo.network.BlockFound}}</p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <h2 matLine>Difficulty: </h2>
+              <p matLine>{{Poolinfo.network.Difficulty}}</p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <h2 matLine>Blockchain Height: </h2>
+              <p matLine>{{Poolinfo.network.BlockchainHeight}}</p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <h2 matLine>Last Reward: </h2>
+              <p matLine>{{Poolinfo.network.LastReward}}</p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <h2 matLine>Last Hash: </h2>
+              <p matLine>{{Poolinfo.network.LastHash}}</p>
+            </mat-list-item>
+          </mat-list>
+
+
+
+        </mat-card-content>
+
+      </mat-card>
+    </li>
+
+  </ul>
+</div>
+
+
+
+
 
 <h1>Mining Ports</h1>
 
@@ -48,7 +122,7 @@
     <th>Starting Difficulty</th>
     <th>Description</th>
   </tr>
-  <tr *ngFor="let pool of Poolinfo.ports">
+  <tr *ngFor="let pool of Poolinfo.pool.ports">
     <td data-th="Port">{{Url}}:{{pool.port}} </td>
     <td data-th="Difficulty">{{pool.difficulty}}</td>
     <td data-th="Description">{{pool.desc}}</td>

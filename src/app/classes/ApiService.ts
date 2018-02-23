@@ -8,7 +8,9 @@ import { PoolBlocks } from './PoolBlocks';
 import { Payments, PaymentsInfo } from './Payments';
 import { Poolinfo, Ports } from './Poolinfo';
 import { AddressInfo, AddressPay } from './AddressInfo';
+import { Network } from './Network';
 
+import timeago from 'timeago.js';
 
 @Injectable()
 export class ApiService {
@@ -174,32 +176,80 @@ export class ApiService {
 
     }
 
-    UpdateCoins(PoolApi): Observable<Poolinfo> {
+    UpdateCoins(PoolApi): Observable<any> {
 
         return this.getStats(PoolApi).map(data => {
             var t = data.json();
 
             let pool = {
-                Hashrate: t['pool'].hashrate,
+                Hashrate: this.getReadableHashRateString(t['pool'].hashrate),
                 Miners: t['pool'].miners,
                 Name: t['config'].coin.toUpperCase(),
                 Symbol: t['config'].symbol,
-                Reward: (t['network'].reward / t['config'].coinUnits).toString(),
+                Fee: t['config'].fee + ' %',
+                Reward: this.getReadableCoins(t['network'].reward, 4, '', t['config'].coinUnits, t['config'].symbol),
                 ports: t['config'].ports as Ports[],
-            }
+                blockSolvedTime: this.getReadableTime(t['network'].difficulty / t['pool'].hashrate),
+                BlockFound: timeago().format(t['network'].lastBlockFound * 1000)
+            } as Poolinfo;
 
 
+            let network = {
+                HashRate: this.getReadableHashRateString(t['network'].difficulty / t['config'].coinDifficultyTarget) + '/sec',
+                BlockFound: timeago().format(t['network'].timestamp * 1000),
+                Difficulty: t['network'].difficulty,
+                BlockchainHeight: t['network'].height,
+                LastReward: this.getReadableCoins(t['network'].reward, 4, '', t['config'].coinUnits, t['config'].symbol),
+                LastHash: t['network'].hash.substr(0, 13) + '...',
+            } as Network;
 
 
-            return <Poolinfo>pool
+            return { pool, network }
 
         })
 
     }
 
+    getReadableCoins(coins, digits, withoutSymbol, coinUnits, symbol) {
+        var amount = (parseInt(coins || 0) / coinUnits).toFixed(digits || coinUnits.toString().length - 1);
+        return amount + (withoutSymbol ? '' : (' ' + symbol));
+    }
 
+    getReadableTime(seconds) {
+        var units: ReadableTime[] = [];
 
+        units.push({ time: 60, unit: 'second' });
+        units.push({ time: 60, unit: 'minute' });
+        units.push({ time: 24, unit: 'hour' });
+        units.push({ time: 7, unit: 'day' });
+        units.push({ time: 4, unit: 'week' });
+        units.push({ time: 12, unit: 'month' });
+        units.push({ time: 1, unit: 'year' });
 
+        function formatAmounts(amount, unit) {
+            var rounded = Math.round(amount);
+            return '' + rounded + ' ' + unit + (rounded > 1 ? 's' : '');
+        }
+        let amount = seconds;
+        for (var i = 0; i < units.length; i++) {
+            if (amount < units[i].time)
+                return formatAmounts(amount, units[i].unit);
+
+            var t = units[i][0];
+            amount = amount / units[i].time;
+        }
+        return formatAmounts(amount, units[units.length - 1].unit);
+    }
+
+    getReadableHashRateString(hashrate) {
+        var i = 0;
+        var byteUnits = [' H', ' KH', ' MH', ' GH', ' TH', ' PH'];
+        while (hashrate > 1024) {
+            hashrate = hashrate / 1024;
+            i++;
+        }
+        return hashrate.toFixed(2) + byteUnits[i];
+    }
 
 
     urlConvert(value, url) {
@@ -214,4 +264,9 @@ export class ApiService {
         return value / parseInt(CoinUnit);
     }
 
+}
+
+interface ReadableTime {
+    time: number;
+    unit: string;
 }
