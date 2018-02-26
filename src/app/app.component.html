@@ -4,11 +4,14 @@
         <app-coin-value></app-coin-value>
     </mat-sidenav>
 
-    <div [ngStyle]="{'display' : (screenWidth > 1024) ? 'none' : 'block'}">
-        <button class="MenuButton"  type="button" color="primary" mat-button (click)="sidenav.open()">
+    <mat-toolbar>
+        <button id="menuButton" type="button" color="primary" mat-button (click)="sidenav.open()" [ngStyle]="{'display' : (screenWidth > 1024) ? 'none' : 'block'}">
             <i class="material-icons">menu</i>
         </button>
-    </div>
+    </mat-toolbar>
+
+
+
 
     <router-outlet></router-outlet>
 

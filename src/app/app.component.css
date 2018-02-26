@@ -2,11 +2,6 @@ mat-sidenav-container, mat-sidenav {
     background-color: #262831;
 }
 
-.MenuButton {
-    top: 10px;
-    left: 1px;
-}
-
 mat-sidenav::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #F5F5F5;
@@ -21,3 +16,15 @@ mat-sidenav::-webkit-scrollbar {
     width: 5px;
 }
 
+#menuButton {
+    background: transparent;
+    border: none;
+    font-size: 40px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+mat-toolbar {
+    background-color: #1d1e24;
+}
