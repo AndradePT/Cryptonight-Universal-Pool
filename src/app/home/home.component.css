@@ -1,35 +1,42 @@
+h1 {
+  font-weight: normal;
+  letter-spacing: -1px;
+  text-align: center;
+  font-family: "Gill Sans", sans-serif;
+  color: #34495E;
+}
 
-
-ul
-{
+ul {
   list-style-type: none;
   padding: 0;
 }
 
 /* Put behind .flexbox for Feature detection with Modernizr */
+
 .flexbox .flex-card-list {
-  display:flex;
-  flex-wrap:wrap;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 .flexbox .flex-card-listitem {
-  display:flex;
-
+  display: flex;
   padding: 1em;
 }
 
 .flexbox .flex-card {
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
 }
 
 .flexbox .flex-card-content {
-  display:flex;
-  flex:1 0 auto; /* We have to add a basis for IE10/11 */
-  flex-direction:column;
+  display: flex;
+  flex: 1 0 auto;
+  /* We have to add a basis for IE10/11 */
+  flex-direction: column;
 }
 
 .flexbox .flex-card-content p {
-  flex:1 0 auto; /* We have to add a basis for IE10/11 */
+  flex: 1 0 auto;
+  /* We have to add a basis for IE10/11 */
 }

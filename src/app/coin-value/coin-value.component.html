@@ -1,0 +1,11 @@
+<h1>MarketCap</h1>
+  <div class="scrollbar" id="style-1">
+      <ul class="flex-card-list">
+          <!-- card list item -->
+          <li class="flex-card-listitem" *ngFor="let coin of client">
+            <div class="coinmarketcap-currency-widget" [attr.data-currency]="coin.id" data-base="USD" data-secondary="BTC"></div>
+          </li>
+        
+        </ul>
+  </div> 
+

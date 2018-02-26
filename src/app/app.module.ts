@@ -23,7 +23,9 @@ import {
   MatDialogModule,
   MatInputModule,
   MatFormFieldModule,
-  MatIconModule
+  MatIconModule,
+  MatToolbarModule
+
 
 
 } from '@angular/material';
@@ -34,6 +36,7 @@ import { GettingStartedComponent } from './getting-started/getting-started.compo
 import { WorkerStatsComponent } from './worker-stats/worker-stats.component';
 import { PoolBlocksComponent } from './pool-blocks/pool-blocks.component';
 import { PaymentsComponent } from './payments/payments.component';
+import { CoinValueComponent } from './coin-value/coin-value.component';
 
 
 const appRoute = [
@@ -61,7 +64,8 @@ const appRoute = [
     GettingStartedComponent,
     WorkerStatsComponent,
     PoolBlocksComponent,
-    PaymentsComponent
+    PaymentsComponent,
+    CoinValueComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +83,9 @@ const appRoute = [
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    MatSidenavModule,
+    MatToolbarModule
   ],
   providers: [ApiService, CookieService],
   bootstrap: [AppComponent],

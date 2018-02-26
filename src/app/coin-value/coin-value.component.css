@@ -1,0 +1,24 @@
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 5px;
+}
+
+.coinmarketcap-currency-widget{
+    background-color: #34495e;
+    border: 3px solid white;
+    border-radius: 12px;
+}
+
+h1 {
+    font-weight: normal;
+    letter-spacing: -1px;
+    text-align: center;
+    font-family: "Gill Sans", sans-serif;
+    color: #34495E;
+  }
+
+
